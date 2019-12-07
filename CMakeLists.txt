@@ -5,17 +5,26 @@ set(CMAKE_CXX_STANDARD 14)
 
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
+find_package(GLEW REQUIRED)
+
+include_directories(${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS})
 
 add_executable(lab1_task1 lab1/task1.cpp)
 add_executable(lab1_task2 lab1/task2.cpp)
 add_executable(lab1_task3 lab1/task3.cpp)
 add_executable(lab1_task4 lab1/task4.cpp)
 add_executable(lab2 lab2/main.cpp)
-
-include_directories(${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS})
+add_executable(lab3 lab3/main.cpp)
+add_executable(lab3-ripple lab3-ripple/main.cpp lab3-ripple/GLSLShader.cpp)
+add_executable(course course-work/main.cpp)
+add_executable(course_original course-work/main_original.cpp)
 
 target_link_libraries(lab1_task1 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 target_link_libraries(lab1_task2 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 target_link_libraries(lab1_task3 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 target_link_libraries(lab1_task4 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 target_link_libraries(lab2 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
+target_link_libraries(lab3 ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
+target_link_libraries(lab3-ripple ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${GLEW_LIBRARIES} ${GLM_LIBRARY})
+target_link_libraries(course ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
+target_link_libraries(course_original ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
