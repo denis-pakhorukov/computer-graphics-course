@@ -1,7 +1,7 @@
 #include <GL/glut.h>
 
 std::size_t current_iteration = 1;
-std::size_t max_iteration = 50;
+std::size_t max_iteration = 1000;
 
 int spin_x = 50, spin_y = 50;
 int old_x = 0, old_y = 0;
@@ -87,15 +87,7 @@ void display() {
 }
 
 void idle() {
-    static int count = 0;
     static int step = +1;
-
-    if (count != 10000) { // slow animation down
-        count++;
-        return;
-    }
-
-    count = 0;
 
     if ((current_iteration > max_iteration && step > 0) || (current_iteration <= 0 && step < 0)) {
         step = -step;
